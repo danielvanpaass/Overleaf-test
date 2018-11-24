@@ -1,0 +1,73 @@
+\documentclass{tudelft-report}
+%hier komen je packages wanneer nodig
+\usepackage{minted, siunitx}
+\usepackage{blindtext}
+\usepackage{listings}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\renewcommand{\thesection}{\arabic{section}} %zodat die 0'etjes weg gaan :D
+\makeatletter
+% \textsubscript defined equivalent to \textsuperscript in latex.ltx
+\DeclareRobustCommand*\textsubscript[1]{%
+  \@textsubscript{\selectfont#1}}
+\def\@textsubscript#1{%
+  {\m@th\ensuremath{_{\mbox{\fontsize\sf@size\z@#1}}}}}
+\makeatother
+%voor subscript in titel, https://tex.stackexchange.com/questions/70981/sub-superscripts-in-headings-normal-text
+\begin{document}
+
+\frontmatter
+\title[tudelft-white]{Design specification report}
+\subtitle[tudelft-black]{EPO-3} 
+\author[tudelft-white]{A5}       % hier kan je je groepsnummer invoeren
+\setlength{\parindent}{0ex}
+\setlength{\parskip}{0.7em}
+
+
+\covertext[tudelft-white]{
+    {\color{black} \today}
+    \vspace{300pt} % dit een beetje aanpassen om het mooi te maken
+    \begin{flushright}
+        Joris van Breukelen ~~~\textit{4704967}\\
+        Ferdi Dabak, ~~~\textit{4674332}\\
+        Hitesh Dialani,      ~~~\textit{4748153}\\
+        Talha Kuruoglu, ~~~\textit{4718569}\\ 
+        Michael Miao, ~~~\textit{4684206}\\
+        Daniel van Paassen,         ~~~\textit{4724968} \\
+        Koen van Remundt,      ~~~\textit{4601793}\\
+        Tim van der Spijk, ~~~\textit{4693817}\\
+        Daniel Vlaardingerbroek, ~~~\textit{4580834}\\
+        
+                   
+    \end{flushright}
+}
+\makecover[split]
+
+\thispagestyle{empty}
+\vspace{30mm}
+%\begin{center}
+%    \Large \bf Abstract
+%\end{center}
+%An abstract is a brief summary of a research article, thesis, review, conference proceeding, or any in-depth analysis of a particular subject and is often used to help the reader quickly ascertain the paper's purpose.
+
+\tableofcontents
+
+\mainmatter
+\input{Chapters/globaloverview.tex}
+\input{Chapters/OverviewPerBlock.tex}
+\input{Chapters/HouseRules&Planning.tex}
+\input{Chapters/MutualTuning.tex}
+\input{Chapters/Testability.tex}
+\input{Chapters/Conclusion.tex}
+
+%\appendix
+%\input{Picture_appendix.tex}
+% en meer appendices...
+
+
+\bibliography{report}
+
+\end{document}

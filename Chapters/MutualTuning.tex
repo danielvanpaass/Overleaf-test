@@ -1,0 +1,18 @@
+\section{Mutual Tuning}
+\subsection{Map Generator}
+The Map Generator block can be seen in Fig. \ref{fig:blockdiagram}. The outputs of the Map Generator consists of the crates and the walls both send by a 121 bit-vector to the block "main". So the block main gets the initial game map. 
+
+\subsection{Hitbox scanner}
+The hitbox scanner can be seen in Fig. \ref{fig:blockdiagram}. The input signals that consist of the directional movement of the players comes from the joystick.The hit box scanner has a clock signal of 12.5 MHz and a reset as input. The new player coordinates will be sent to the main module in a 8 bit-vector per player.The speed of the players will be adjusted with a "cooldown" state, by making a counter that counts until 0.25 seconds.  
+
+\subsection{Main}
+The main block is zoomed in at Fig. \ref{fig:mainblockdiagram}. The function of the coordinates block is described at Section \ref{Coordinates}. The input from the map generator is the initial map. The coordinates block will also have an input signal of two 4-bit vectors for the bombs, coming from the bomb timer. The coordinates block will send an output to the hitbox scanner with an updated map containing the new player coordinates, bomb(4 bit-vector) location and crate(121 bit-vector) location.
+\\
+\\
+\noindent
+The Bomb timer gets a 2-bit vector input from the buttons that are pressed by each player to drop a bomb in the game, one bit to determine if a bomb is placed and 1 bit to determine which player dropped the bomb. The bomb timer will use the same clock signal frequency that gets generated for the VGA output, which is 60 Hz. There will also be an output to the audio block. The coordinates will get a 4-bit x and y position vector with the bomb coordinates and signal that a bomb is placed. 
+\\
+\\
+\noindent
+The hit register has an input of a 28 bit-vector consisting of the bomb and player location from coordinates block. The hit register will send an output to block Victory if any player is hit by a bomb.In total there is an output of 7 bits per bomb. Hit register will also have an output to the video and possible audio generator.
+
